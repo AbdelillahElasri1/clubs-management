@@ -34,7 +34,7 @@ CREATE TABLE user(
     email varchar(50) NOT NULL,
     nom varchar(30) NOT NULL,
     prenom varchar(30) NOT NULL,
-    mdp varchar(30) NOT NULL
+    mdp varchar(100) NOT NULL
 );
 
 /*CREATION DE LA TABLE club*/
@@ -58,7 +58,7 @@ CREATE TABLE apprenant(
     annee int NOT NULL,
     img_profile varchar(100) NOT NULL,
     type_apprenant BOOLEAN default(false),
-    club_id int NOT NULL,
+    club_id int,
     CONSTRAINT CK_annee CHECK (annee = 1 OR annee = 2),
     CONSTRAINT FK_club FOREIGN KEY (club_id) REFERENCES club(id)
 );

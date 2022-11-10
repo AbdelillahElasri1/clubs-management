@@ -5,7 +5,7 @@
         private $host = "localhost";
         private $database = "clubs";
         private $port = 3306;
-        private $conn;
+        public $conn;
 
         /*
         DB class contructor
