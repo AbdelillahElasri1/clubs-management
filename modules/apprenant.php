@@ -1,5 +1,5 @@
 <?php
-    require "./../DB/config.php";
+    //require "./../DB/config.php";
 
     class Apprenant{
 
@@ -37,7 +37,7 @@
         *@return string
         */
 
-        function getPreom(){
+        function getPrenom(){
             return $this->prenom;
         }
 
@@ -113,7 +113,10 @@
         */
 
         function setImg_profile($img){
-            $this->img_profile = $img_profile;
+            $this->img_profile = $img;
         }
+
+        //autre methodes
+
     }
 ?>
