@@ -2,7 +2,7 @@
     class DB{
         private $username = "root";
         private $password = "123@Password";//changer votre mdp
-        private $host = "localhost";
+        private $host = "db";
         private $database = "clubs";
         private $port = 3306;
         public $conn;
@@ -20,4 +20,5 @@
         }
 
     }
+
 ?>

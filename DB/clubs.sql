@@ -52,13 +52,13 @@ CREATE TABLE club(
 
 CREATE TABLE apprenant(
     id INT PRIMARY KEY AUTO_INCREMENT,
-    nom varchar(30) NOT NULL,
-    prenom varchar(30) NOT NULL,
+    nom varchar(30) NOT NULL UNIQUE,
+    prenom varchar(30) NOT NULL UNIQUE,
     classe varchar(30) NOT NULL,
     annee int NOT NULL,
     img_profile varchar(100) NOT NULL,
     type_apprenant BOOLEAN default(false),
-    club_id int,
+    club_id int DEFAULT(null),
     CONSTRAINT CK_annee CHECK (annee = 1 OR annee = 2),
     CONSTRAINT FK_club FOREIGN KEY (club_id) REFERENCES club(id)
 );
