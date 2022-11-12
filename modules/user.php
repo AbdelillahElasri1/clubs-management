@@ -1,11 +1,13 @@
 <?php
     require "./../DB/config.php";
+    require "./club.php";
     class User{
         private $id;
         private $email;
         private $nom;
         private $prenom;
         private $mdp;
+        private $clubs = [];
 
         /*création des getters & setters*/
         //getters
@@ -28,6 +30,15 @@
 
         function getMdp(){
             return $this->mdp;
+        }
+
+        /*
+        *get clubs
+        *@return array $clubs
+        */
+
+        function getClubs(){
+            return $this->clubs;
         }
 
         //setters
@@ -69,6 +80,30 @@
                 'cost' => 12,
             ];
             $this->mdp = password_hash($mdp, PASSWORD_BCRYPT, $option);
+        }
+        /*
+        *set clubs
+        *@param array clubs
+        */
+
+        function setClubs($clubs){
+            $this->clubs = $clubs;
+        }
+
+        //autre methodes
+
+        /*
+        *créer un club
+        *@param array $data
+        */
+
+        function ajouterclub($data){
+            $tmp = new DB();
+            $tmp->init();
+            $club = new Club();
+
+            $club->setNom($data['nom']);
+            //$club->set
         }
 
         function initUser(){

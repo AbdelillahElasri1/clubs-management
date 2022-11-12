@@ -72,6 +72,16 @@
         //setters
 
         /*
+        *set id
+        *@param int $id
+        */
+
+        
+        function setId($id){
+            $this->id = $id;
+        }
+
+        /*
         *modifier le nom de l'apprenant
         *@param string $nom 
         */
