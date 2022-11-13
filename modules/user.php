@@ -1,6 +1,6 @@
 <?php
-    require "./../DB/config.php";
-    require "./club.php";
+    require_once dirname(__FILE__)."/../DB/config.php";
+    require_once dirname(__FILE__)."/club.php";
     class User{
         private $id;
         private $email;
@@ -100,10 +100,45 @@
         function ajouterclub($data){
             $tmp = new DB();
             $tmp->init();
-            $club = new Club();
+            $newClub = new Club();
 
-            $club->setNom($data['nom']);
-            //$club->set
+            $newClub->setNom($data['nom']);
+            $newClub->setTitre($data['titre']);
+            $newClub->setImg_club($data['image']);
+
+            $query = "INSERT INTO club(nom, titre, image) VALUES ('{$newClub->getNom()}', '{$newClub->getTitre()}', '{$newClub->getImg_club()}');";
+            $tmp->conn->query($query);
+            $newClub->setId($tmp->conn->insert_id);
+
+            array_push($this->clubs, $newClub);
+
+            echo "club ajouter";
+
+            //affecter la liste des apprenants du club
+
+            // $query = "SELECT * FROM apprenant WHERE club_id = {$newClub->getId()};";
+            // $result = $tmp->conn->query($query);
+            // while($row = $result->fetch_array(MYSQLI_ASSOC)){
+            //     $newApprenant = new Apprenant();
+            //     $newApprenant->setId($row['id']);
+            //     $newApprenant->setNom($row['nom']);
+            //     $newApprenant->setPrenom($row['prenom']);
+            //     $newApprenant->setClasse($row['classe']);
+            //     $newApprenant->setAnnee($row['annee']);
+            //     $newApprenant->setId($row['id']);
+            //     $newApprenant->setImg_profile($row['img_profile']);
+
+
+            // }
+        }
+
+        /*
+        *afficher la liste des clubs
+        @return array
+        */
+
+        function afficherClubs(){
+            echo count($this->getClubs());
         }
 
         function initUser(){
@@ -122,6 +157,6 @@
         }
     }
 
-    $tmp = new User();
-    $tmp->initUser();
+    //$tmp = new User();
+    //$tmp->initUser();
 ?>

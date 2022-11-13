@@ -52,8 +52,8 @@ CREATE TABLE club(
 
 CREATE TABLE apprenant(
     id INT PRIMARY KEY AUTO_INCREMENT,
-    nom varchar(30) NOT NULL UNIQUE,
-    prenom varchar(30) NOT NULL UNIQUE,
+    nom varchar(30) NOT NULL,
+    prenom varchar(30) NOT NULL,
     classe varchar(30) NOT NULL,
     annee int NOT NULL,
     img_profile varchar(100) NOT NULL,

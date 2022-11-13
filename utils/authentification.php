@@ -1,5 +1,5 @@
 <?php
-    require "./../DB/config.php";
+    require_once "./../DB/config.php";
 
     $email = $_POST["email"];
     $password = $_POST["password"];

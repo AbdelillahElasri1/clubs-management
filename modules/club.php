@@ -1,6 +1,6 @@
 <?php
-    require "./../DB/config.php";
-    require "./apprenant.php";
+    require_once dirname(__FILE__)."/../DB/config.php";
+    require_once dirname(__FILE__)."/apprenant.php";
 
     class Club{
         private $id;

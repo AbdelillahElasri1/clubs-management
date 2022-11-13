@@ -16,5 +16,6 @@ services:
       - MYSQL_ROOT_PASSWORD=123@Password
     volumes:
       - db-data:/var/lib/mysql
+      - ./DB:/Home
 volumes:
   db-data:

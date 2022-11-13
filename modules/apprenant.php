@@ -1,5 +1,5 @@
 <?php
-    //require "./../DB/config.php";
+    require_once dirname(__FILE__)."/../DB/config.php";
 
     class Apprenant{
 
