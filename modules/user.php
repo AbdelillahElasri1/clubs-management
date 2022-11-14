@@ -137,8 +137,31 @@
         @return array
         */
 
-        function afficherClubs(){
-            echo count($this->getClubs());
+        function Clubs(){
+            //echo count($this->getClubs());
+            $tmp = new DB();
+            $tmp->init();
+
+            $query = "SELECT * FROM club;";
+            $result = $tmp->conn->query($query);
+            while($row = $result->fetch_array(MYSQLI_ASSOC)){
+
+                $newClub = new Club();
+                $newClub->setId($row["id"]);
+                $newClub->setNom($row["nom"]);
+                $newClub->settitre($row["titre"]);
+                $newClub->setDate_creation($row["date_creation"]);
+                $newClub->setImg_Club($row["img_club"]);
+
+                //liste des apprenants qui appartient a ce club
+
+                $newClub->listeApprenants();
+                array_push($this->clubs, $newClub);
+            }
+            //echo count(his->clubs)
+
+            $tmp->close();
+
         }
 
         function initUser(){
@@ -158,5 +181,6 @@
     }
 
     //$tmp = new User();
+    //$tmp->Clubs();
     //$tmp->initUser();
 ?>

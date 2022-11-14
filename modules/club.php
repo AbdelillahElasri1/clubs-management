@@ -6,7 +6,6 @@
         private $id;
         private $nom;
         private $date_creation;
-        private $nbr_membre = 0;
         private $titre;
         private $img_club;
         private $apprenants = [];
@@ -40,15 +39,6 @@
 
         function getDate_creation(){
             return $this->date_creation;
-        }
-
-        /*
-        *get nbr_membre
-        *@return int
-        */
-
-        function getNbr_membre(){
-            return $this->nbr_membre;
         }
 
         /*
@@ -107,14 +97,6 @@
             $this->date_creation = $date_creation;
         }
 
-        /*
-        *set nbr_membre
-        *@param int $nbr_membre
-        */
-
-        function setNbr_membre($nbr_membre){
-            $this->nbr_membre = $nbr_membre;
-        }
 
         /*
         *set titre
@@ -158,7 +140,6 @@
                 echo "UPDATE apprenant SET club_id = {$this->getId()} WHERE id = {$apprenant->getId()}\n";
                 $tmp->conn->query("UPDATE apprenant SET club_id = {$this->getId()} WHERE id = {$apprenant->getId()}");
                 array_push($this->apprenants, $apprenant);
-                $this->nbr_membre++;
                 return true;
             }else{
                 foreach($this->apprenants as $a){
@@ -168,7 +149,6 @@
                         echo "UPDATE apprenant SET club_id = {$this->getId()} WHERE id = {$apprenant->getId()}\n";
                         $tmp->conn->query("UPDATE apprenant SET club_id = {$this->getId()} WHERE id = {$apprenant->getId()}");
                         array_push($this->apprenants, $apprenant);
-                        $this->nbr_membre++;
                         return true;
                     }
                 }
@@ -240,6 +220,28 @@
             $tmp->conn->query($query);
 
             
+        }
+
+        /*
+        *liste des apprenants
+        */
+
+        function listeApprenants(){
+            $tmp = new DB();
+            $tmp->init();
+            $query = "SELECT * from apprenant WHERE club_id = {$this->getId()};";
+            $result = $tmp->conn->query($query);
+            while($row = $result->fetch_array(MYSQLI_ASSOC)){
+                $newApprenant = new Apprenant();
+                $newApprenant->setId($row['id']);
+                $newApprenant->setNom($row['nom']);
+                $newApprenant->setPrenom($row['prenom']);
+                $newApprenant->setClasse($row['classe']);
+                $newApprenant->setAnnee($row['annee']);
+                $newApprenant->setImg_profile($row['img_profile']);
+                array_push($this->apprenants, $newApprenant);
+            }
+            $tmp->close();
         }
 
     }

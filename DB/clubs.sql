@@ -42,8 +42,7 @@ CREATE TABLE user(
 CREATE TABLE club(
     id INT PRIMARY KEY AUTO_INCREMENT,
     nom varchar(30) NOT NULL,
-    date_creation DATE DEFAULT(NOW()),
-    nbr_membre INT DEFAULT 0,
+    date_creation DATETIME DEFAULT CURRENT_TIMESTAMP,
     titre varchar(30) NOT NULL,
     img_club varchar(100) NOT NULL
 );

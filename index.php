@@ -1,5 +1,13 @@
 <?php
     require_once "./modules/user.php";
+    $user = new User();
+    if(isset($_SESSION['userid']))
+        $user->setId($_SESSION['userid']);
+    if(isset($_SESSION['nom']))
+        $user->setNom($_SESSION['nom']);
+    if(isset($_SESSION['userid']))
+        $user->setPrenom($_SESSION['prenom']);
+    $user->Clubs();
 ?>
 <!DOCTYPE html>
     <head>
@@ -10,19 +18,19 @@
     </head>
     <body>
             <div class="dialog">
-            <form action="" method="POST">
+                <form action="./utils/addClub.php" method="POST" enctype="multipart/form-data">
                         <label for="nom">Nom</label>
-                        <input id="nom" type="text" name="nom"/>
+                        <input id="nom" type="text" name="nom" required/>
                         <label for="titre">Titre</label>
-                        <input id="titre" type="text" name="titre"/>
+                        <input id="titre" type="text" name="titre" required/>
                         <label for="image">Image</label>
-                        <input id="image" type="file" name="img_club"/>
+                        <input id="image" type="file" name="img_club" required/>
                         <div class="options">
                             <button class="btn btn-success btn-sm">ajouter</button>
-                            <span class="btn btn-danger btn-sm">fermer</span>
+                            <span class="btn btn-danger btn-sm close-add-apprenant">fermer</span>
                         </div>
-            </form>
-</div>    
+                </form>
+            </div>    
             <main>
             <nav>
                 <img src="./assets/logo.png" alt="youcode logo" id="logo"/>
@@ -58,38 +66,96 @@
             </div>
             <section class="cards">
                 <div class="card_nbr" id="1">
-                    <p class="nombre">0<p>
+                    <p class="nombre">
+                        <?php
+                            echo count($user->getClubs());
+                        ?>
+                    <p>
                     <p>nombre de clubs créer</p>
                 </div>
                 <div class="card_nbr" id="2">
-                    <p class="nombre">0<p>
+                    <p class="nombre">
+                        <?php
+                            $tmp = new DB();
+                            $tmp->init();
+
+                            $query = "SELECT COUNT(*) FROM apprenant;";
+                            $result = $tmp->conn->query($query);
+
+                            echo $result->fetch_row()[0];
+                        ?>
+                    <p>
                     <p>nombre d'apprenants</p>
                 </div>
                 <div class="card_nbr" id="3">
-                    <p class="nombre">0<p>
+                    <p class="nombre">
+                        <?php
+                            $tmp = new DB();
+                            $tmp->init();
+
+                            $query = "SELECT COUNT(*) FROM apprenant WHERE annee = 1;";
+                            $result = $tmp->conn->query($query);
+
+                            echo $result->fetch_row()[0];
+                        ?>
+                    <p>
                     <p>nombre d'apprenants du première année</p>
                 </div>
                 <div class="card_nbr" id="4">
-                    <p class="nombre">0<p>
+                    <p class="nombre">
+                        <?php
+                            $tmp = new DB();
+                            $tmp->init();
+
+                            $query = "SELECT COUNT(*) FROM apprenant WHERE annee = 2;";
+                            $result = $tmp->conn->query($query);
+
+                            echo $result->fetch_row()[0];
+                        ?>
+                    <p>
                     <p>nombre d'apprenants du deuxième année</p>
                 </div>
             </section>
             <section class="clubs">
-                <div class="card">
-                    <img src=""alt="club image" class="card-img-top"/>
+                <?php
+                    foreach($user->getClubs() as $club_){
+                        echo '
+                        <div class="card">
+                    <img src="./assets/clubs/'.$club_->getImage().'" alt="club image" class="card-img-top"/>
                     <div class="card-body">
-                        <p class="card-title">title<p>
+                        <p class="card-title">'.$club_->getNom().'<p>
+                        <p>'.$club_->getTitre().'</p>
                     </div>
                     <div class="card-footer">
-                        <a class="btn btn-info text-color">voir le club</a>
-                        <div class="avatars float-right">
-                            <img src="./assets/guest.png" class="test"/>
-                            <img src="./assets/guest.png" class="test"/>
-                            <img src="./assets/guest.png" class="test"/>
-                            <sup>+3<sup>
-                        </div>
+                        <a class="btn btn-info text-color">voir le club</a>';
+                        if(count($club_->getApprenants()) == 1)
+                            echo '<div class="avatars float-right">
+                                    <img src="./assets/guest.png" class="test"/>
+                                  </div>';
+                        else if(count($club_->getApprenants()) == 2)
+                            echo '<div class="avatars float-right">
+                                    <img src="./assets/guest.png" class="test"/>
+                                    <img src="./assets/guest.png" class="test"/>
+                                  </div>';
+                        else if(count($club_->getApprenants()) == 3)
+                            echo '<div class="avatars float-right">
+                                          <img src="./assets/guest.png" class="test"/>
+                                          <img src="./assets/guest.png" class="test"/>
+                                          <img src="./assets/guest.png" class="test"/>
+                                        </div>';
+                        else if(count($club_->getApprenants()) > 3)
+                                echo '<div class="avatars float-right">
+                                            <img src="./assets/guest.png" class="test"/>
+                                            <img src="./assets/guest.png" class="test"/>
+                                            <img src="./assets/guest.png" class="test"/>
+                                            <sup>+3</sup>
+                                        </div>';
+
+                    echo '   
                     </div>
-                </div>
+                </div>';
+                    }
+                ?>
             </section>
         </main>
     </body>
