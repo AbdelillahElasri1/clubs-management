@@ -19,6 +19,7 @@ https://trello.com/invite/b/PyyDu4GE/ATTI06ce1a97c512747e9c2a21cf1b103b545E101B7
   ![cas d'utilisation](case.png)
   
  - diagramme de classe
+ 
    ![classe](class-diagram.png)
 
 - diagramme de sequence(ajout d'un club)
