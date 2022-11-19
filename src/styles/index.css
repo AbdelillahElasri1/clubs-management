@@ -4,7 +4,6 @@
 }
 
 body {
-  width: 100vw;
   box-sizing: border-box;
 }
 
@@ -151,7 +150,6 @@ button {
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
   display: none;
 }
 .dialog form {
@@ -161,7 +159,6 @@ button {
   justify-content: center;
   border-radius: 3px;
   flex-direction: column;
-  z-index: 1;
   background-color: white;
   border: 1px solid black;
   padding: 20px;

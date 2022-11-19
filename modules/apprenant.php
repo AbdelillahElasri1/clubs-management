@@ -9,6 +9,7 @@
         private $classe;
         private $annee;
         private $img_profile;
+        private $responable;
 
         //setters and getters
 
@@ -68,6 +69,16 @@
             return $this->img_profile;
         }
 
+        /*
+        *get responsable
+        *@return boolean
+        */
+
+        function getResponsable(){
+            return $this->responsable;
+        }
+
+
 
         //setters
 
@@ -124,6 +135,15 @@
 
         function setImg_profile($img){
             $this->img_profile = $img;
+        }
+
+        /*
+        *set responable
+        *@param boolean $bool
+        */
+
+        function setReponsable($bool){
+            $this->responsable = $bool;
         }
 
         //autre methodes

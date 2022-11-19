@@ -1,0 +1,52 @@
+body {
+  box-sizing: border-box;
+}
+
+.section {
+  margin-left: 30px;
+}
+
+.apprenant-container {
+  width: 100%;
+  padding: 10px 30px;
+}
+
+.apprenant-img img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.exist-warning {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.dialog-info {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  top: 0;
+  left: 0;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.dialog-info .info {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border: 1px solid black;
+  background: white;
+  padding: 20px;
+  padding-bottom: 5px;
+}
+.dialog-info .info .key {
+  font-weight: 900;
+}
+.dialog-info .info .value {
+  font-style: italic;
+  font-weight: 500;
+}/*# sourceMappingURL=club.css.map */

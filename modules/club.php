@@ -227,6 +227,7 @@
         */
 
         function listeApprenants(){
+            $this->setApprenants([]);
             $tmp = new DB();
             $tmp->init();
             $query = "SELECT * from apprenant WHERE club_id = {$this->getId()};";
@@ -239,9 +240,33 @@
                 $newApprenant->setClasse($row['classe']);
                 $newApprenant->setAnnee($row['annee']);
                 $newApprenant->setImg_profile($row['img_profile']);
+                $newApprenant->setReponsable($row['responsable']);
                 array_push($this->apprenants, $newApprenant);
             }
             $tmp->close();
+        }
+
+        /*
+        *initialisation du club a partir du fichier
+        *@param int $id
+        */
+
+        function initClubId($id){
+            $tmp = new DB();
+            $tmp->init();
+            $query = "SELECT * FROM club WHERE id = {$id} LIMIT 1;";
+            $result = $tmp->conn->query($query);
+            if(!$result)
+                throw new Exception("not found");
+            $tmp->close();
+
+            $row = $result->fetch_array(MYSQLI_ASSOC);
+            $this->setId($row["id"]);
+            $this->setNom($row["nom"]);
+            $this->setTitre($row["titre"]);
+            $this->setImg_club($row["img_club"]);
+            $this->setDate_creation($row["date_creation"]);
+            $this->listeApprenants();
         }
 
     }

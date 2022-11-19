@@ -127,29 +127,29 @@
                         <p>'.$club_->getTitre().'</p>
                     </div>
                     <div class="card-footer">
-                        <a class="btn btn-info text-color">voir le club</a>';
+                        <a class="btn btn-info text-color" href="./club.php?id='.$club_->getId().'">voir le club</a>';
                         if(count($club_->getApprenants()) == 1)
-                            echo '<div class="avatars float-right">
-                                    <img src="./assets/guest.png" class="test"/>
-                                  </div>';
+                            echo "<div class='avatars float-right'>
+                                    <img src='./assets/apprenants/{$club_->getApprenants()[0]->getImg_profile()}' class='test'/>
+                                  </div>";
                         else if(count($club_->getApprenants()) == 2)
-                            echo '<div class="avatars float-right">
-                                    <img src="./assets/guest.png" class="test"/>
-                                    <img src="./assets/guest.png" class="test"/>
-                                  </div>';
+                            echo "<div class='avatars float-right'>
+                                    <img src='./assets/apprenants/{$club_->getApprenants()[0]->getImg_profile()}' class='test'/>
+                                    <img src='./assets/apprenants/{$club_->getApprenants()[1]->getImg_profile()}' class='test'/>
+                                  </div>";
                         else if(count($club_->getApprenants()) == 3)
-                            echo '<div class="avatars float-right">
-                                          <img src="./assets/guest.png" class="test"/>
-                                          <img src="./assets/guest.png" class="test"/>
-                                          <img src="./assets/guest.png" class="test"/>
-                                        </div>';
+                            echo "<div class='avatars float-right'>
+                                          <img src='./assets/apprenants/{$club_->getApprenants()[0]->getImg_profile()}' class='test'/>
+                                          <img src='./assets/apprenants/{$club_->getApprenants()[1]->getImg_profile()}' class='test'/>
+                                          <img src='./assets/apprenants/{$club_->getApprenants()[2]->getImg_profile()}' class='test'/>
+                                        </div>";
                         else if(count($club_->getApprenants()) > 3)
-                                echo '<div class="avatars float-right">
-                                            <img src="./assets/guest.png" class="test"/>
-                                            <img src="./assets/guest.png" class="test"/>
-                                            <img src="./assets/guest.png" class="test"/>
-                                            <sup>+3</sup>
-                                        </div>';
+                                echo "<div class='avatars float-right'>
+                                        <img src='./assets/apprenants/{$club_->getApprenants()[0]->getImg_profile()}' class='test'/>
+                                        <img src='./assets/apprenants/{$club_->getApprenants()[1]->getImg_profile()}' class='test'/>
+                                        <img src='./assets/apprenants/{$club_->getApprenants()[2]->getImg_profile()}' class='test'/>
+                                        <sup>+3</sup>
+                                    </div>";
 
                     echo '   
                     </div>
