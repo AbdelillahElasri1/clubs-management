@@ -8,6 +8,7 @@ $(".add-club").click(()=>{
     let key = 0;
     $(".dialog").toggle(key++ % 2);
     $(".menu").css({'display': 'none'});
+    $(".responsable_form").css({"display": "none"});
 });
 
 $(".close-add-apprenant").click(()=>{
@@ -23,6 +24,7 @@ $(".add-apprenant").click(()=>{
 
 $(".show-details").click(()=>{
     $(".dialog-info").css({"display": "flex"});
+    $(".responsable_form").css({"display": "none"});
 });
 
 $(".close-info").click(()=>{
@@ -31,4 +33,9 @@ $(".close-info").click(()=>{
 
 $("input:checkbox").click((evt)=>{
     evt.target.parentNode.submit();
-})
+});
+
+$(".change-respo").click(()=>{
+    console.log("clicked!");
+    $(".responsable_form").css({"display": "unset"});
+});

@@ -62,9 +62,9 @@
                 <label for="nom">Nom</label>
                 <input type="text" name="nom" id="nom" required/>
                 <label for="prenom">Prénom</label>
-                <input id="prenom" name="prenom" type="text" required/>
+                <input id="prenom" name="prenom" type="text" required id="prenom"/>
                 <label for="annee">Année</label>
-                <select name="annee" required>
+                <select name="annee" required id="annee">
                     <option value="1" selected>1</option>
                     <option value="2">2</option>
                 </select>
@@ -73,9 +73,12 @@
                     <option value="ada lovelace" selected>Ada lovelace</option>
                     <option value="alan turing">Alan turing</option>
                     <option value="margarite hamilton">Margaret Hamilton</option>
+                    <option value="java1">Java 1</option>
+                    <option value="java2">Java 2</option>
+                    <option value="JS">JS</option>
                 </select>
                 <label for="image">Image de l'apprenant<label>
-                <input type="file" name="image" id="image"required/>
+                <input type="file" name="image" id="image"/>
                 <label>Représentant</label>
                 <input type="checkbox" name="represenant" id="representant"/>
                 <input type="hidden" name="club_id" value="<?php echo $_GET["id"];?>" />
@@ -87,7 +90,9 @@
         </div>
         <main>
         <nav>
-                <img src="./assets/logo.png" alt="youcode logo" id="logo"/>
+                <a href="./index.php">
+                    <img src="./assets/logo.png" alt="youcode logo" id="logo"/>
+                </a>
                 <?php
                     if(!isset($_SESSION['userid'])){
                         echo '<section class="avatar">
@@ -127,8 +132,11 @@
             <div class="section">
                 <button class="btn btn-success add-apprenant">ajouter un nouveau apprenant</button>
                 <button class="btn btn-info show-details">club détails</button>
-                <button class="btn btn-warning text-white">changer le représentant</button>
-                <button class="btn btn-danger delete-club">supprimer le club"<?php echo $club->getNom();?>"</button>
+                <button class="btn btn-warning text-white change-respo">changer le représentant</button>
+                <form action="./utils/deleteClub.php" method="POST">
+                    <input type="hidden" name="id" value="<?php echo $club->getId();?>"/>
+                    <button class="btn btn-danger delete-club">supprimer le club"<?php echo $club->getNom();?>"</button>
+                </form>
             </div>
             <div class="apprenant-container">
                 <table class="table">
@@ -149,11 +157,12 @@
                                 echo "<tr>
                                     <td>
                                         {$apprenant->getId()}
-                                        <form method='POST'action='./utils/changeResponsable.php'>
+                                        <form method='POST'action='./utils/changeResponsable.php' class='responsable_form'>
                                             <input type='checkbox'  id='respo_{$apprenant->getId()}' name='represenant'";
                                             if($apprenant->getResponsable())
                                                 echo "checked disabled";
                                             echo "/>
+                                            <input type='hidden' name='apprenant' value='{$apprenant->getId()}'/>
                                             <input type='hidden' name='club_id' value='{$_GET['id']}'/>
                                         </form>
                                     </td>
@@ -165,12 +174,16 @@
                                     <td>{$apprenant->getClasse()}</td>
                                     <td>{$apprenant->getAnnee()}</td>
                                     <td>
-                                        <button class='btn btn-sm btn-danger'>
-                                            <i class='bi bi-trash3'></i>
-                                        </button>
-                                        <button class='btn btn-sm btn-warning'>
+                                        <form method='POST' action='./utils/deleteApprenant.php'>
+                                            <input type='hidden' name='id' value='{$apprenant->getId()}'/>
+                                            <input type='hidden' name='image' value='{$apprenant->getImg_profile()}'/>
+                                            <button class='btn btn-sm btn-danger'>
+                                                <i class='bi bi-trash3'></i>
+                                            </button>
+                                        </form>
+                                        <a href='./edit.php?id={$apprenant->getId()}' class='btn btn-sm btn-warning'>
                                             <i class='bi bi-pen'></i>
-                                        </button>
+                                        </a>
                                     </td>
                                 </tr>";
                             }

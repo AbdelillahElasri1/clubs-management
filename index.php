@@ -123,8 +123,8 @@
                         <div class="card">
                     <img src="./assets/clubs/'.$club_->getImage().'" alt="club image" class="card-img-top"/>
                     <div class="card-body">
-                        <p class="card-title">'.$club_->getNom().'<p>
-                        <p>'.$club_->getTitre().'</p>
+                        <p class="card-title nom">'.$club_->getNom().'<p>
+                        <p class="titre">'.$club_->getTitre().'</p>
                     </div>
                     <div class="card-footer">
                         <a class="btn btn-info text-color" href="./club.php?id='.$club_->getId().'">voir le club</a>';

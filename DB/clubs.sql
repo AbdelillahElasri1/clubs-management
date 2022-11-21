@@ -59,5 +59,5 @@ CREATE TABLE apprenant(
     responsable BOOLEAN default(false),
     club_id int DEFAULT(null),
     CONSTRAINT CK_annee CHECK (annee = 1 OR annee = 2),
-    CONSTRAINT FK_club FOREIGN KEY (club_id) REFERENCES club(id)
+    CONSTRAINT FK_club FOREIGN KEY (club_id) REFERENCES club(id) ON DELETE CASCADE
 );

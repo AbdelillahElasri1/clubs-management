@@ -98,11 +98,16 @@ main nav .avatar #avatar {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 20px;
   flex-wrap: wrap;
+  margin-bottom: 10px;
 }
 
 .card {
   width: 300px;
+}
+.card .card-img-top {
+  height: 200px;
 }
 .card .card-footer {
   display: flex;
@@ -115,6 +120,13 @@ main nav .avatar #avatar {
   justify-content: center;
   align-items: center;
 }
+.card .nom {
+  font-weight: bold;
+  font-size: 22px;
+}
+.card .titre {
+  font-weight: 600;
+}
 
 .text-color {
   color: white !important;
@@ -124,7 +136,7 @@ main nav .avatar #avatar {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 2px solid red;
+  border: 2px solid rgb(151, 144, 144);
 }
 
 .test:nth-child(2) {
@@ -141,16 +153,17 @@ button {
 }
 
 .dialog {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
+  z-index: 9999;
 }
 .dialog form {
   margin: 40px auto;
@@ -166,4 +179,16 @@ button {
 
 input {
   margin-bottom: 10px !important;
+}
+
+@media screen and (max-width: 650px) {
+  .cards {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .cards > * {
+    width: 70%;
+  }
 }/*# sourceMappingURL=index.css.map */
