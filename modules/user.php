@@ -187,6 +187,26 @@ class User
         $tmp->close();
     }
 
+    /*
+    *init user par l'id
+    *@param int $id
+    */
+
+    function initId($id)
+    {
+        $tmp = new DB();
+        $tmp->init();
+        $query = "SELECT * FROM user WHERE id = {$id};";
+        echo $query;
+        $result = $tmp->conn->query($query);
+        $row = $result->fetch_array(MYSQLI_ASSOC);
+        $this->setId($id);
+        $this->setEmail($row['email']);
+        $this->setNom($row["nom"]);
+        $this->setPrenom($row["prenom"]);
+        $tmp->close();
+    }
+
     function initUser()
     {
         $tmp = new DB();

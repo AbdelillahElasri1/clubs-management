@@ -1,11 +1,11 @@
-main {
+main section {
   display: flex !important;
   flex-direction: row;
   justify-content: center;
   align-content: center;
   margin-top: 50px;
 }
-main .login {
+main section .login {
   width: 400px;
   height: -webkit-fit-content;
   height: -moz-fit-content;
@@ -15,22 +15,38 @@ main .login {
   align-items: center;
   flex-direction: column;
 }
-main .login form {
+main section .login form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
   gap: 15px;
 }
-main .login form button {
-  padding: 10px;
-}
-main .login form .label {
+main section .login form .label {
   display: flex;
   flex-direction: column;
 }
-main .login form .label input {
+main section .login form .label input {
   padding: 10px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 10px 5px;
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+}
+nav #logo {
+  width: 200px;
+  height: 40px;
+}
+nav .avatar #avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
 .logo-login {
