@@ -2,7 +2,7 @@
     require_once "./../DB/config.php";
 
     $email = $_POST["email"];
-    $password = $_POST["password"];
+    $password = $_POST["mdp"];
 
     $db = new DB();
     $db->init();
@@ -26,5 +26,3 @@
         header("Location: ./../index.php");
     }else
         header("Location: ./../login.php?error=error");
-
-?>

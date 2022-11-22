@@ -1,0 +1,43 @@
+main{
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    margin-top: 50px;
+    .login{
+        width: 400px;
+        height: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        & form{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-content: center;
+            gap: 15px;
+            button{
+                padding: 10px;
+            }
+            & .label{
+                display: flex;
+                flex-direction: column;
+                & input{
+                    padding: 10px;
+                }
+            }
+        }
+    }
+}
+
+.logo-login{
+    width: 300px;
+    height: 100px;
+}
+
+.profile{
+    border-radius: 50%;
+    height: 200px;
+    width: 100%;
+}

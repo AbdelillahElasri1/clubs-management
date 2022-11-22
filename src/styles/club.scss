@@ -58,3 +58,9 @@ body{
 .responsable_form{
     display: none;
 }
+
+.actions{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}

@@ -7,8 +7,8 @@
         $query = "DELETE FROM club WHERE id = {$_POST["id"]};";
         echo $query;
         $tmp->conn->query($query);
+        unlink("./../assets/clubs/{$_POST['image']}");
         $tmp->close();
         header("Location: ./../index.php");
     }else
         header("Location: ./../index.php");
-?>

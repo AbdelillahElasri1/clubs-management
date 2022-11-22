@@ -214,7 +214,7 @@
 
         function supprimerApprenant($id){
             $tmp = new DB();
-            $tmp>init();
+            $tmp->init();
 
             $query = "DELETE FROM apprenant WHERE id = {$id};";
             $tmp->conn->query($query);
@@ -276,4 +276,3 @@
     //$data = [ 'nom' => 'bb', 'prenom' => 'bb', 'classe' => 'a', 'annee' => 1, 'img' => 'a'];
 
     //$tmp->creerApprenant($data);
-?>
