@@ -62,4 +62,18 @@ body {
   display: flex;
   flex-direction: row;
   gap: 5px;
+}
+
+@media screen and (max-width: 700px) {
+  .section {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 600px) {
+  .apprenant-container {
+    overflow-y: scroll;
+  }
 }/*# sourceMappingURL=club.css.map */

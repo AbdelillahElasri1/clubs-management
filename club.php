@@ -19,6 +19,7 @@ $club->listeApprenants();
 
 <head>
     <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>club <?php
                 echo $club->getNom() . '#' . $club->getId();
                 ?></title>
@@ -99,14 +100,13 @@ $club->listeApprenants();
             <?php
             if (isset($_SESSION['userid'])) {
                 echo '<section class="avatar">
-                        <img src="./assets/guest.png" alt="guest logo" id="avatar"/>
                         <i class="bi bi-caret-down-fill toggle-menu"></i>
                         <div class="menu">
-                            <a>
+                            <a href="./settings.php" class="settings link-dark">
                                 <i class="bi bi-gear-fill"></i>
                                 modifier
                             </a>
-                            <form action="" method="POST">
+                            <form action="./utils/logout.php" method="POST">
                                 <button title="déconnecter">
                                     <i class="bi bi-box-arrow-right"></i>
                                     déconnecter
@@ -120,7 +120,7 @@ $club->listeApprenants();
             ?>
         </nav>
         <div class="text">
-            <h1>Liste des apprenants du club "<?php
+            <p>Liste des apprenants du club "<?php
                                                 echo $club->getNom();
                                                 //echo gettype((int)$_GET["id"]);
                                                 $x = $_GET["id"];
@@ -132,7 +132,7 @@ $club->listeApprenants();
                                                     echo " 🃏";
                                                 else
                                                     echo " 🎯";
-                                                ?>"</h1>
+                                                ?>"</p>
         </div>
         <div class="section">
             <button class="btn btn-success add-apprenant">ajouter un nouveau apprenant</button>
@@ -154,7 +154,10 @@ $club->listeApprenants();
                         <th scope="col">Prénom</th>
                         <th scope="col">classe</th>
                         <th scope="col">annee</th>
-                        <th scope="col">action</th>
+                        <?php
+                        if (isset($_SESSION['userid']))
+                            echo '<th scope="col">action</th>';
+                        ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -178,20 +181,21 @@ $club->listeApprenants();
                                     <td>{$apprenant->getNom()}</td>
                                     <td>{$apprenant->getPrenom()}</td>
                                     <td>{$apprenant->getClasse()}</td>
-                                    <td>{$apprenant->getAnnee()}</td>
-                                    <td class='actions'>
-                                        <form method='POST' action='./utils/deleteApprenant.php'>
-                                            <input type='hidden' name='id' value='{$apprenant->getId()}'/>
-                                            <input type='hidden' name='image' value='{$apprenant->getImg_profile()}'/>
-                                            <button class='btn btn-sm btn-danger'>
-                                                <i class='bi bi-trash3'></i>
-                                            </button>
-                                        </form>
-                                        <a href='./edit.php?id={$apprenant->getId()}' class='btn btn-sm btn-warning'>
-                                            <i class='bi bi-pen'></i>
-                                        </a>
-                                    </td>
-                                </tr>";
+                                    <td>{$apprenant->getAnnee()}</td>";
+                        if (isset($_SESSION['userid']))
+                            echo "<td class='actions'>
+                                            <form method='POST' action='./utils/deleteApprenant.php'>
+                                                <input type='hidden' name='id' value='{$apprenant->getId()}'/>
+                                                <input type='hidden' name='image' value='{$apprenant->getImg_profile()}'/>
+                                                <button class='btn btn-sm btn-danger'>
+                                                    <i class='bi bi-trash3'></i>
+                                                </button>
+                                            </form>
+                                            <a href='./edit.php?id={$apprenant->getId()}' class='btn btn-sm btn-warning'>
+                                                <i class='bi bi-pen'></i>
+                                            </a>
+                                        </td>
+                                    </tr>";
                     }
                     ?>
                 </tbody>

@@ -91,6 +91,7 @@ main nav .avatar #avatar {
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+  font-size: 35px;
 }
 
 .clubs {
@@ -181,6 +182,11 @@ input {
   margin-bottom: 10px !important;
 }
 
+.settings {
+  color: black !important;
+  text-decoration: none !important;
+}
+
 @media screen and (max-width: 650px) {
   .cards {
     flex-direction: column;
@@ -190,5 +196,9 @@ input {
   }
   .cards > * {
     width: 70%;
+  }
+  .text p {
+    font-size: 16px;
+    text-align: center;
   }
 }/*# sourceMappingURL=index.css.map */

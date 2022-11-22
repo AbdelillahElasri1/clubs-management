@@ -14,7 +14,7 @@ else {
     <meta charset="utf-8" />
     <title>Modifier Apprenant</title>
     <!-- <link rel="stylesheet" href="./src/styles/index.css" /> -->
-    <link rel="stylesheet" href="./src/styles/edit.css" />
+    <link rel="stylesheet" href="./src/styles/form.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.1/font/bootstrap-icons.css">
     <link rel="icon" type="images/x-icon" href="./assets/logo.png" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.0/dist/css/bootstrap.min.css">
@@ -22,13 +22,12 @@ else {
 </head>
 
 <body>
-    <nav>
+    <nav class="nav_">
         <a href="./index.php">
             <img src="./assets/logo.png" alt="youcode logo" id="logo" />
         </a>
         <?php
         echo '<section class="avatar">
-                        <img src="./assets/guest.png" alt="guest logo" id="avatar"/>
                         <i class="bi bi-caret-down-fill toggle-menu"></i>
                         <div class="menu">
                             <form action="" method="POST">
@@ -41,7 +40,7 @@ else {
                     </section>';
         ?>
     </nav>
-    <main>
+    <main class="test">
 
         <section class="jumbotron login">
             <form action="./utils/editApprenant.php" method="POST" enctype="multipart/form-data">

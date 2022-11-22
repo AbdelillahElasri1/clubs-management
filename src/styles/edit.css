@@ -1,12 +1,13 @@
 main section {
-  display: flex !important;
+  display: flex;
   flex-direction: row;
   justify-content: center;
   align-content: center;
   margin-top: 50px;
 }
 main section .login {
-  width: 400px;
+  width: 50%;
+  border: 1px solid black;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -14,39 +15,6 @@ main section .login {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-main section .login form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  gap: 15px;
-}
-main section .login form .label {
-  display: flex;
-  flex-direction: column;
-}
-main section .login form .label input {
-  padding: 10px;
-}
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.2);
-  padding: 10px 5px;
-  -webkit-backdrop-filter: blur(20px);
-          backdrop-filter: blur(20px);
-}
-nav #logo {
-  width: 200px;
-  height: 40px;
-}
-nav .avatar #avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
 }
 
 .logo-login {

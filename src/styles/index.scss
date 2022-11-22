@@ -90,6 +90,7 @@ main{
     justify-content: center;
     align-items: center;
     margin-top: 20px;
+    font-size: 35px;
 }
 
 .clubs{
@@ -177,6 +178,10 @@ button{
 input{
     margin-bottom: 10px !important;
 }
+.settings{
+    color: black !important;
+    text-decoration: none !important;
+}
 
 @media screen and (max-width: 650px){
     .cards{
@@ -186,6 +191,13 @@ input{
         width: 100%;
         & > *{
             width: 70%;
+        }
+    }
+
+    .text{
+        p{
+            font-size: 16px;
+            text-align: center;
         }
     }
 }

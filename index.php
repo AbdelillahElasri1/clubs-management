@@ -42,10 +42,9 @@ $user->Clubs();
             <?php
             if (isset($_SESSION['userid'])) {
                 echo '<section class="avatar">
-                        <img src="./assets/guest.png" alt="guest logo" id="avatar"/>
                         <i class="bi bi-caret-down-fill toggle-menu"></i>
                         <div class="menu">
-                            <a>
+                            <a href="./settings.php" class="settings link-dark">
                                 <i class="bi bi-gear-fill"></i>
                                 modifier
                             </a>

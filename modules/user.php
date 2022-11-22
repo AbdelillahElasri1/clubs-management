@@ -197,7 +197,6 @@ class User
         $tmp = new DB();
         $tmp->init();
         $query = "SELECT * FROM user WHERE id = {$id};";
-        echo $query;
         $result = $tmp->conn->query($query);
         $row = $result->fetch_array(MYSQLI_ASSOC);
         $this->setId($id);

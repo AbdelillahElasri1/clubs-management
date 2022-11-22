@@ -1,54 +1,20 @@
 main{
     section{
-        display: flex !important;
+        display: flex;
         flex-direction: row;
         justify-content: center;
         align-content: center;
         margin-top: 50px;
         .login{
-            width: 400px;
+            width: 50%;
+            border: 1px solid black;
             height: fit-content;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            & form{
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-content: center;
-                gap: 15px;
-                // button{
-                //     padding: 10px;
-                // }
-                & .label{
-                    display: flex;
-                    flex-direction: column;
-                    & input{
-                        padding: 10px;
-                    }
-                }
-            }
+            
         }
-    }
-}
-nav{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.2);
-    padding: 10px 5px;
-    backdrop-filter: blur(20px);
-
-    & #logo{
-        width: 200px;
-        height: 40px;
-    }
-
-    & .avatar #avatar{
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
     }
 }
 

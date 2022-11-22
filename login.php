@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <title>Authentifier</title>
-    <link rel="stylesheet" href="./src/styles/index.css" />
-    <link rel="stylesheet" href="./src/styles/edit.css" />
+
+    <link rel="stylesheet" href="./src/styles/login.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.1/font/bootstrap-icons.css">
     <link rel="icon" type="images/x-icon" href="./assets/logo.png" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.0/dist/css/bootstrap.min.css">
